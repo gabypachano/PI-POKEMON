@@ -1,9 +1,7 @@
 const {Router} = require('express');
+const { allTypesHandler } = require('../handlers/typesHandlers');
 const router = Router();
-// const {} = require() //Aqui voy a importar el handler
 
-router.get('/', (req, res) => {
-res.status(200).send('Esta es mi ruta que se trae a todos los tipos')
-})
+router.get('/', allTypesHandler)
 
 module.exports = router;
