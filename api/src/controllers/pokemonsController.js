@@ -18,7 +18,6 @@ const getPokemonsApi = async () => {
                 image: info.data.sprites.front_default,
                 types: info.data.types.map((t) => t.type.name),
                 attack: info.data.stats[1].base_stat
-
             }
         })
         const getAllPokemons = await Promise.all(promisesPokemon)
@@ -45,5 +44,6 @@ const createPokemonDb = async () => {
 
 module.exports = {
     getPokemonsApi,
+    
 
 }

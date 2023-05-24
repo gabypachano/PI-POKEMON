@@ -1,6 +1,6 @@
 const { getPokemonsApi } = require('../controllers/pokemonsController')
 
-// ---> Recibe la info por 
+// ---> Recibe la info por query
 const allPokemonsHandler = async (req, res) => {
     try {
         const apiInfo = await getPokemonsApi()
