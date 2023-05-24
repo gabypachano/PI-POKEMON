@@ -1,0 +1,49 @@
+const axios = require("axios");
+const { Pokemon, Type } = require('../db')
+
+
+// README: Obtiene un arreglo de objetos, donde cada objeto es un pokemon con su información.
+// Funcion para traerme los datos de la API, me traigo 50 pokemones
+
+const getPokemonsApi = async () => {
+    try {
+        const peticionApi = await axios.get('https://pokeapi.co/api/v2/pokemon/?limit=50')
+        const results = await peticionApi.data.results
+        
+        const promisesPokemon = results.map(async pokemon => {
+            const info = await axios.get(pokemon.url)
+            return {
+                id: info.data.id,
+                name: info.data.name,
+                image: info.data.sprites.front_default,
+                types: info.data.types.map((t) => t.type.name),
+                attack: info.data.stats[1].base_stat
+
+            }
+        })
+        const getAllPokemons = await Promise.all(promisesPokemon)
+        return getAllPokemons
+    } catch (error) {
+        throw new Error(error.message)
+    }
+}
+
+
+// Función para obtener la info de la DB
+const getPokemonsDb = async () => {
+
+}
+
+// Función para crear un nuevo Pokemon
+const createPokemonDb = async () => {
+
+}
+
+
+
+
+
+module.exports = {
+    getPokemonsApi,
+
+}
