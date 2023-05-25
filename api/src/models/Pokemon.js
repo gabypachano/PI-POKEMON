@@ -44,7 +44,7 @@ module.exports = (sequelize) => {
   );
 };
 
-//! Son obligatorios
+//! Son obligatorios *
 // ID. * -> id
 // Nombre. * -> name
 // Imagen. * -> image

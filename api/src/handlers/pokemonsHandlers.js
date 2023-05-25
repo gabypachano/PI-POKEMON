@@ -1,19 +1,31 @@
-const { getPokemonsApi } = require('../controllers/pokemonsController')
+const { getPokemonsApi, getPokemonById, getAllPokemons } = require('../controllers/pokemonsController')
 
 // ---> Recibe la info por query
 const allPokemonsHandler = async (req, res) => {
+    const {name} = req.query
     try {
-        const apiInfo = await getPokemonsApi()
+        if(name) {
+            const apiInfo = await getAllPokemons(name)
+            return res.status(200).send(apiInfo)
+        }
+        const apiInfo = await getAllPokemons()
         res.status(200).send(apiInfo)
         
     } catch (error) {
-        res.status(400).send({message: 'No se pudieron obtener todos los pokemons', error })
+        res.status(400).json({error: error.message})
     }
-
 }
 
 // ---> Recibe la info por params
-const pokemonsByIdHandler = () => {}
+const pokemonsByIdHandler = async (req, res) => {
+    // try {
+    //     const {id} = req.params
+    //     const pokemonsId = getPokemonById(id)
+    //     res.status(200).send(pokemonsId)        
+    // } catch (error) {
+    //     res.status(400).send({message: `No se encontro el pokemon con id: ${id}`})
+    // }
+}
 
 // ---> Recibe la info por body
 const createPokemonsHandler = () => {}

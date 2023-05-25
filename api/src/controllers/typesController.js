@@ -10,7 +10,7 @@ const resultApi = await infoApi.data.results
 
 let allPokemonsTypes = resultApi.map(pokemon => allTypes.push(pokemon.name))
 
-// Para guardar los tipos de pokemon en la DB lo haremos con el método de sequalize findOrCreate por si ya existe este tipo en la base de datos, asi no se repiten los tipos
+// Para guardar los tipos de pokemon en la DB lo haremos  con el método de sequalize findOrCreate por si ya existe este tipo en la base de datos, asi no se repiten los tipos
 await Promise.all(allTypes.map(type => {
     Type.findOrCreate({
         where: {name: type}

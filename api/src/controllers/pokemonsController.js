@@ -27,23 +27,52 @@ const getPokemonsApi = async () => {
     }
 }
 
-
 // Función para obtener la info de la DB
 const getPokemonsDb = async () => {
+    return await Pokemon.findAll({
+        include: {
+            model: Type,
+            attributes: ['name'],
+            through: {
+                attributes: []
+            }
+        }
+    })
+}
+
+// Función para concatenar ----> Con esta función voy a obtener los pokemons que me traigo de la API y también los que son creados y guardados en la base de datos.
+const getAllPokemons = async (name) => {
+    const pokemonsDb = await getPokemonsDb()
+    const pokemonsApi = await getPokemonsApi()
+    const allPokemons = pokemonsDb.concat(pokemonsApi)
+
+    let pokebyName
+    if(name) {
+        pokebyName = allPokemons.filter(pokemon => pokemon.name.toLowerCase().includes(name.toLowerCase()))
+        if(pokebyName.length === 0) return 'No se encontró ningún pokemon con ese nombre'
+        return pokebyName
+    }
+    return allPokemons
+}
+
+
+const getPokemonById = async (id) => {
+    // const pokemonsInfo = await allPokemons()
+    // const pokemonsById = await pokemonsInfo.find(pokemon => pokemon.id == id)
+    // if(pokemonsById.length === 0) return 'No se encontró ningún pokemon con ese ID'
+    // return pokemonsById
 
 }
+
 
 // Función para crear un nuevo Pokemon
 const createPokemonDb = async () => {
-
 }
-
-
-
-
 
 module.exports = {
     getPokemonsApi,
-    
-
+    getPokemonsDb,
+    getAllPokemons,
+    getPokemonById,
+    createPokemonDb
 }
