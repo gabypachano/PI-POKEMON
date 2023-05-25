@@ -1,7 +1,6 @@
 const axios = require("axios")
 const { Type } = require('../db');
 
-
 const getAllPokemonsTypes = async () => {
 // Declaramos un array vacio para guardar nuestros tipos de pokemons
 let allTypes = [];
