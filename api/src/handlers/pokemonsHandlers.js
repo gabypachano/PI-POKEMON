@@ -12,19 +12,19 @@ const allPokemonsHandler = async (req, res) => {
         res.status(200).send(apiInfo)
         
     } catch (error) {
-        res.status(400).json({error: error.message})
+        res.status(400).send({message: 'No se encontró ningun pokemon con ese nombre'})
     }
 }
 
 // ---> Recibe la info por params
 const pokemonsByIdHandler = async (req, res) => {
-    // try {
-    //     const {id} = req.params
-    //     const pokemonsId = getPokemonById(id)
-    //     res.status(200).send(pokemonsId)        
-    // } catch (error) {
-    //     res.status(400).send({message: `No se encontro el pokemon con id: ${id}`})
-    // }
+    const {id} = req.params
+    try {
+        const pokemonsId = await getPokemonById(id)
+        res.status(200).send(pokemonsId)        
+    } catch (error) {
+        res.status(400).send({message: `No se encontro el pokemon con id: ${id}`})
+    }
 }
 
 // ---> Recibe la info por body

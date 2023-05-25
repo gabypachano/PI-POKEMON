@@ -55,13 +55,11 @@ const getAllPokemons = async (name) => {
     return allPokemons
 }
 
-
 const getPokemonById = async (id) => {
-    // const pokemonsInfo = await allPokemons()
-    // const pokemonsById = await pokemonsInfo.find(pokemon => pokemon.id == id)
-    // if(pokemonsById.length === 0) return 'No se encontró ningún pokemon con ese ID'
-    // return pokemonsById
-
+    const pokemonsInfo = await getAllPokemons()
+    const pokemonsById = await pokemonsInfo.find(pokemon => pokemon.id == id)
+    if(pokemonsById.length === 0) return 'No se encontró ningún pokemon con ese ID'
+    return pokemonsById
 }
 
 
