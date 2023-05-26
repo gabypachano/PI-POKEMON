@@ -55,6 +55,7 @@ const getAllPokemons = async (name) => {
     return allPokemons
 }
 
+//Aqui hacer el manejo de errores con trhow new error arreglar el condicional como la imagen de prueba y probar el handler y el error igual en la funcion de arriba... porque esta enviando un .send como texto //!IMPORTANTE
 const getPokemonById = async (id) => {
     const pokemonsInfo = await getAllPokemons()
     const pokemonsById = await pokemonsInfo.find(pokemon => pokemon.id == id)
@@ -64,8 +65,22 @@ const getPokemonById = async (id) => {
 
 
 // Función para crear un nuevo Pokemon
-const createPokemonDb = async () => {
+const createPokemonDb = async (name, image, hp, attack, defense, speed, height, weight) => {
 }
+
+// Nombre.
+// Imagen.
+// Vida.
+// Ataque.
+// Defensa.
+// Velocidad (si tiene).
+// Altura (si tiene).
+// Peso (si tiene).
+
+//! OJO TENER EN CUENTA
+// Botones/Opciones para filtrar por tipo, y por si su origen es de la API o de la base de datos (creados por nosotros desde el formulario).
+// Botones/Opciones para ordenar tanto ascendentemente como descendentemente los pokemones por orden alfabético y por ataque.
+// Paginado: el listado de pokemones se hará por partes. Tu SPA debe contar con un paginado que muestre un total de 12 pokemones por página.
 
 module.exports = {
     getPokemonsApi,
