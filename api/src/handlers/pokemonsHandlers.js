@@ -1,4 +1,4 @@
-const { getPokemonsApi, getPokemonById, getAllPokemons } = require('../controllers/pokemonsController')
+const { getPokemonsApi, getPokemonById, getAllPokemons, createPokemonDb } = require('../controllers/pokemonsController')
 
 // ---> Recibe la info por query
 const allPokemonsHandler = async (req, res) => {
@@ -12,7 +12,7 @@ const allPokemonsHandler = async (req, res) => {
         res.status(200).send(apiInfo)
         
     } catch (error) {
-        res.status(400).send({message: 'No se encontró ningun pokemon con ese nombre'})
+        res.status(400).send({error: error.message})
     }
 }
 
@@ -23,14 +23,20 @@ const pokemonsByIdHandler = async (req, res) => {
         const pokemonsId = await getPokemonById(id)
         res.status(200).send(pokemonsId)        
     } catch (error) {
-        res.status(400).send({message: `No se encontro el pokemon con id: ${id}`})
+        res.status(400).send({message: error.message})
     }
 }
 
 // ---> Recibe la info por body
-const createPokemonsHandler = () => {}
-
-
+const createPokemonsHandler = async (req,res) => {
+    const {name, image, hp, attack, defense, types} = req.body
+    try {
+        const pokemonCreate = await createPokemonDb(name, image, hp, attack, defense, types)
+        res.status(200).send(pokemonCreate)
+    } catch (error) {
+        res.status(400).send({message: error.message})
+    }
+}
 
 module.exports = {
     allPokemonsHandler,

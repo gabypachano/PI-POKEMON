@@ -49,30 +49,41 @@ const getAllPokemons = async (name) => {
     let pokebyName
     if(name) {
         pokebyName = allPokemons.filter(pokemon => pokemon.name.toLowerCase().includes(name.toLowerCase()))
-        if(pokebyName.length === 0) return 'No se encontró ningún pokemon con ese nombre'
-        return pokebyName
+        if(pokebyName.length) return pokebyName
+        throw new Error("No se encontró ningún pokemon con ese nombre")
     }
     return allPokemons
 }
 
-//Aqui hacer el manejo de errores con trhow new error arreglar el condicional como la imagen de prueba y probar el handler y el error igual en la funcion de arriba... porque esta enviando un .send como texto //!IMPORTANTE
 const getPokemonById = async (id) => {
     const pokemonsInfo = await getAllPokemons()
-    const pokemonsById = await pokemonsInfo.find(pokemon => pokemon.id == id)
-    if(pokemonsById.length === 0) return 'No se encontró ningún pokemon con ese ID'
-    return pokemonsById
+    const pokemonsById = await pokemonsInfo.filter(pokemon => pokemon.id == id)
+    if(pokemonsById.length) return pokemonsById
+    throw new Error(`No se encontró el pokemon con ID: ${id}`)
+}
+
+// Función para crear un nuevo Pokemon y guardarlo en la base de datos
+// Paso a paso:
+// (La función recibe por parámetro) todos los valores que voy a recibir por formulario
+// 1. Voy a crear el pokemon con el metodo create or findorcreate
+// 2.
+const createPokemonDb = async () => {
+
 }
 
 
-// Función para crear un nuevo Pokemon
-const createPokemonDb = async (name, image, hp, attack, defense, speed, height, weight) => {
-}
 
-// Nombre.
-// Imagen.
-// Vida.
-// Ataque.
-// Defensa.
+
+
+
+
+
+
+// Nombre. **
+// Imagen. **
+// Vida.   **
+// Ataque. **
+// Defensa.**
 // Velocidad (si tiene).
 // Altura (si tiene).
 // Peso (si tiene).
