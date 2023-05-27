@@ -29,15 +29,29 @@ const getPokemonsApi = async () => {
 
 // Función para obtener la info de la DB
 const getPokemonsDb = async () => {
-    return await Pokemon.findAll({
+    const allPokemonsDb = await Pokemon.findAll({
         include: {
             model: Type,
             attributes: ['name'],
-            through: {
-                attributes: []
-            }
         }
     })
+
+    const mapPokeInfo = allPokemonsDb.map(pokemon => {
+        return {
+            id: pokemon.id,
+            name: pokemon.name,
+            image: pokemon.image,
+            types: pokemon.Types.map(poke => poke.name),
+            attack: pokemon.attack,
+            hp: pokemon.hp,
+            defense: pokemon.defense,
+            speed: pokemon.speed,
+            height: pokemon.height,
+            weight: pokemon.weight
+        }
+    })
+
+    return mapPokeInfo
 }
 
 // Función para concatenar ----> Con esta función voy a obtener los pokemons que me traigo de la API y también los que son creados y guardados en la base de datos.
@@ -66,17 +80,34 @@ const getPokemonById = async (id) => {
 // Paso a paso:
 // (La función recibe por parámetro) todos los valores que voy a recibir por formulario
 // 1. Voy a crear el pokemon con el metodo create or findorcreate
-// 2.
-const createPokemonDb = async () => {
+// 2. Voy a buscar los tipos en la base de datos porque desde alli es que el cliente los va a obtener
+// 3. Voy a hacer la relacion de lo que recibo por body y los tipos que va a buscar en la DB
+// 4. Probar con un JSON si se crea el pokemon y como se crea 
+// 5. Muy probablemente debo hacer una funcion para mapear la forma en que me devuelve los tipos de los pokemones)
+const createPokemonDb = async (name, image, hp, attack, defense, speed, height, weight, types) => {
+    const [pokemon, created] = await Pokemon.findOrCreate({
+        where: {name},
+        defaults: {
+            name,
+            image, 
+            hp, 
+            attack, 
+            defense, 
+            speed, 
+            height, 
+            weight
+        }
+    })
+
+    if(!created) throw new Error("Este pokemon ya existe en la DB")
+
+    const typesDb = await Type.findAll(
+        {where: {name: types}
+    })
+
+    pokemon.addType(typesDb)
 
 }
-
-
-
-
-
-
-
 
 
 // Nombre. **

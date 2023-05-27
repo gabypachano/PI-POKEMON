@@ -29,10 +29,10 @@ const pokemonsByIdHandler = async (req, res) => {
 
 // ---> Recibe la info por body
 const createPokemonsHandler = async (req,res) => {
-    const {name, image, hp, attack, defense, types} = req.body
+    const {name, image, hp, attack, defense, speed, height, weight, types} = req.body
     try {
-        const pokemonCreate = await createPokemonDb(name, image, hp, attack, defense, types)
-        res.status(200).send(pokemonCreate)
+        const pokemonCreate = await createPokemonDb(name, image, hp, attack, defense, speed, height, weight, types)
+        res.status(200).send({message: "Pokemon creado con éxito"})
     } catch (error) {
         res.status(400).send({message: error.message})
     }
