@@ -1,0 +1,34 @@
+.nav-container{
+    background-color: #199bec;
+    display: flex;
+    align-items: center;
+    justify-content:left;
+    height: 100px;
+    width: 100%;
+}
+
+.img-container img{
+    width: 6rem;
+    margin: 10px;
+}
+
+.link-container{
+    display: flex;
+    width: 10rem;
+    justify-content: space-between;
+    align-items: center;
+    margin-left: 40.5vw;
+}
+
+.link-container button{
+    background-color: #d41414;
+    border: none;
+    color: white;
+    padding: 10px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 0 5 px;
+    cursor: pointer;
+}
