@@ -1,5 +1,5 @@
 import './App.css';
-import { Switch, Route } from 'react-router-dom';
+import { Switch, Route, useLocation } from 'react-router-dom';
 import Home from './views/Home/Home';
 import Detail from './views/Detail/Detail';
 import Create from './views/Create/Create';
@@ -7,9 +7,10 @@ import Landing from './views/Landing/Landing';
 import NavBar from './components/NavBar/NavBar';
 
 function App() {
+  const location = useLocation()
   return (
-    <>
-    <NavBar />
+    <div className='App'>
+      {location.pathname !== "/" && <NavBar />}
     <Switch>
       <Route path='/home'>
         <Home />
@@ -24,7 +25,7 @@ function App() {
         <Landing />
       </Route>
     </Switch>
-    </>
+    </div>
   );
 }
 

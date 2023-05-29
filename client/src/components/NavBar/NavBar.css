@@ -1,10 +1,11 @@
 .nav-container{
     background-color: #199bec;
     display: flex;
+    flex-direction: row;
     align-items: center;
-    justify-content:left;
-    height: 100px;
-    width: 100%;
+    justify-content: space-around;
+    border-radius: 15px;
+    border: 1px solid black;
 }
 
 .img-container img{
