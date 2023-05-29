@@ -2,7 +2,7 @@ import React from 'react'
 import { GET_ALL_POKEMONS } from './types'
 
 const initialState = {
-  pokemons: [],
+  allPokemons: [],
   types: [],
   pokemonsFilter: [],
   pokemonDetail: {}
@@ -13,7 +13,7 @@ const rootReducer = (state = initialState, action) => {
       case GET_ALL_POKEMONS:
         return {
           ...state,
-          pokemons: action.payload
+          allPokemons: action.payload
         }
         default: 
         return {...state}
