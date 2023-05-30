@@ -7,7 +7,7 @@ import Card from '../Card/Card'
 const Cards = () => {
 
   //Acá voy a crear mi Estado Global, se guarda todo lo que está en el estado allPokemons
-  const pokemons = useSelector(state => state.allPokemons)
+  const pokemons = useSelector(state => state.pokemons)
 
 
 // Acá haré mi paginado

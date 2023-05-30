@@ -4,8 +4,8 @@ import { Link } from 'react-router-dom'
 
 function Landing() {
   return (
-    <div>
-      <h1>Bienvenidos a mi App de Pokemon</h1>
+    <div className='div1'>
+      <h1 className="title">BIENVENIDOS A MI APP DE POKEMON</h1>
       <Link to={"/home"}>
       <button>Home</button>
       </Link>
