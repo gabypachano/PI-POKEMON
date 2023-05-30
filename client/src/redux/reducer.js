@@ -1,4 +1,3 @@
-import React from 'react'
 import { GET_ALL_POKEMONS } from './types'
 
 const initialState = {
