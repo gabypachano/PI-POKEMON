@@ -1,10 +1,9 @@
-import { CREATE_POKEMONS, GET_ALL_POKEMONS, GET_ALL_TYPES, GET_POKEMONS_BY_NAME } from './types'
+import { CREATE_POKEMONS, FILTER_BY_TYPE, GET_ALL_POKEMONS, GET_ALL_TYPES, GET_POKEMONS_BY_NAME } from './types'
 
 const initialState = {
   allPokemons: [],
   pokemons: [],
   types: [],
-  // pokemonsFilter: [],
   // pokemonDetail: {}
 }
 const rootReducer = (state = initialState, action) => {
@@ -33,6 +32,18 @@ const rootReducer = (state = initialState, action) => {
         return {
           ...state
         }
+      
+        case FILTER_BY_TYPE:
+          let pokemons
+          if(payload === "all") {
+            pokemons = state.pokemons
+          } else {
+            pokemons = pokemons.filter(poke => poke.types.includes(payload))
+          }
+          return {
+            ...state,
+            pokemons: pokemons
+          }
 
         default: 
         return {...state}

@@ -1,5 +1,5 @@
 import axios from "axios"
-import { GET_ALL_POKEMONS, GET_POKEMONS_BY_NAME, GET_ALL_TYPES } from "./types"
+import { GET_ALL_POKEMONS, GET_POKEMONS_BY_NAME, GET_ALL_TYPES, FILTER_BY_TYPE } from "./types"
 
 export const getAllPokemons = () => {
     let endpoint = "http://localhost:3001/pokemons"
@@ -51,5 +51,12 @@ export const createPokemons = (payload) => {
             alert("Este pokemon ya existe")
             console.error(error)
         }
+    }
+}
+
+export const filterByType = (payload) => {
+    return {
+        type: FILTER_BY_TYPE,
+        payload
     }
 }

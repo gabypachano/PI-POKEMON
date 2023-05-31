@@ -1,4 +1,5 @@
-import React from 'react'
+import React from 'react';
+import { useDispatch } from 'react-redux';
 
 
 
@@ -9,6 +10,12 @@ import React from 'react'
 
 
 function Filters() {
+  const dispatch = useDispatch()
+  
+
+
+
+
   return (
 
     <>
