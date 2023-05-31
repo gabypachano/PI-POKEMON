@@ -4,7 +4,8 @@ import "./NavBar.css"
 import SearchBar from '../SearchBar/SearchBar';
 import Filters from '../Filters/Filters';
 
-function NavBar() {
+
+const NavBar = () => {
 
   return (
     <div className='nav-container'>

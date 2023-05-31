@@ -28,8 +28,8 @@ const Cards = () => {
 
   return (
     <>
-    <div className='styles.container'>
-      <div className='styles.divCards'>
+    <div className='divContainer'>
+      <div className='divCards'>
         {
           currentPokemons?.map((pokemon, index) => (
             <Card 
