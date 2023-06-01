@@ -2,7 +2,7 @@ import React from 'react'
 import './Card.css'
 import { Link } from "react-router-dom"
 
-const Card = ({id, image, name, types}) => {
+const Card = ({id, image, name, types, attack}) => {
   return (
     <div>
       <h3>{name.toUpperCase()}</h3>
@@ -15,9 +15,12 @@ const Card = ({id, image, name, types}) => {
       <div>
         <p><span>Types: </span></p>
         {
-          <p><span>{types?.map((type) => type + " ")}</span></p>
+          <p><span>{types?.map((type) => type)}</span></p>
         }
 
+      </div>
+      <div>
+        <h3> {attack} </h3>
       </div>
     </div>
   )

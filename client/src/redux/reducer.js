@@ -1,8 +1,8 @@
-import { CREATE_POKEMONS, FILTER_BY_TYPE, GET_ALL_POKEMONS, GET_ALL_TYPES, GET_POKEMONS_BY_NAME } from './types'
+import { CREATE_POKEMONS, FILTER_BY_ORIGIN, FILTER_BY_TYPE, GET_ALL_POKEMONS, GET_ALL_TYPES, GET_POKEMONS_BY_NAME, SORT_BY_ALPHABETICAL_ORDER, SORT_BY_ATTACK } from './types'
 
 const initialState = {
   allPokemons: [],
-  pokemons: [],
+  pokemonsFilter: [],
   types: [],
   // pokemonDetail: {}
 }
@@ -13,13 +13,13 @@ const rootReducer = (state = initialState, action) => {
         return {
           ...state,
           allPokemons: action.payload,
-          pokemons: action.payload
+          pokemonsFilter: action.payload
         }
 
       case GET_POKEMONS_BY_NAME:
         return {
           ...state,
-          pokemons: action.payload
+          pokemonsFilter: action.payload
         }
       
       case GET_ALL_TYPES:
@@ -34,19 +34,84 @@ const rootReducer = (state = initialState, action) => {
         }
       
         case FILTER_BY_TYPE:
-          let pokemons
-          if(payload === "all") {
-            pokemons = state.pokemons
+          let pokemonsFilter
+          if(action.payload === "all") {
+            pokemonsFilter = state.allPokemons
           } else {
-            pokemons = pokemons.filter(poke => poke.types.includes(payload))
+            pokemonsFilter = state.allPokemons.filter(poke => poke.types.includes(action.payload))
           }
           return {
             ...state,
-            pokemons: pokemons
+            pokemonsFilter: pokemonsFilter
+          }
+        
+        case FILTER_BY_ORIGIN:
+          const regexUUID = /^[0-9A-F]{8}-[0-9A-F]{4}-[4][0-9A-F]{3}-[89AB][0-9A-F]{3}-[0-9A-F]{12}$/i
+          if(action.payload === "all") {
+            return {
+              ...state,
+              pokemonsFilter: state.allPokemons
+            }
           }
 
+          if(action.payload === "db") {
+            let pokemonsFilterDb = state.allPokemons.filter(pokemon => regexUUID.test(pokemon.id))
+            return {
+              ...state,
+              pokemonsFilter: pokemonsFilterDb
+            }
+          }
+
+          if(action.payload === "api") {
+            let pokemonsFilterApi = state.allPokemons.filter(pokemon => !regexUUID.test(pokemon.id))
+            return {
+              ...state,
+              pokemonsFilter: pokemonsFilterApi
+            }
+          }
+     
+
+        case SORT_BY_ALPHABETICAL_ORDER:
+          let orderAlphabetic = [...state.allPokemons]
+
+          if(action.payload === "asc") {
+            orderAlphabetic.sort((a,b) => {
+              if(a.name.toLowerCase() < b.name.toLowerCase()) return -1
+              return 1
+            })
+          }
+          
+          if(action.payload === "desc") {
+            orderAlphabetic.sort((a,b) => {
+              if(a.name.toLowerCase() > b.name.toLowerCase()) return -1
+              return 1
+            })
+          }
+
+          return {
+            ...state,
+            pokemonsFilter: orderAlphabetic
+          }
+
+        case SORT_BY_ATTACK:
+          let orderByAttack = [...state.allPokemons]
+
+          if(action.payload === "min") {
+            orderByAttack.sort((a, b) => Number(a.attack) - Number(b.attack))
+          }
+
+          if(action.payload === "max") {
+            orderByAttack.sort((a, b) => Number(b.attack) - Number(a.attack))
+          }
+
+          return {
+            ...state,
+            pokemonsFilter: orderByAttack
+          }
+
+
         default: 
-        return {...state}
+          return {...state}
     }
 }
 

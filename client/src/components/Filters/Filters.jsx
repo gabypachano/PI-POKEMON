@@ -1,7 +1,7 @@
 import React from 'react';
-import { useDispatch } from 'react-redux';
-
-
+import { useDispatch, useSelector } from 'react-redux';
+import { filterByOrigin, filterByType, getTypes, sortByAlphabetic, sortByAttack } from '../../redux/actions';
+import { useEffect } from 'react';
 
 
 
@@ -11,38 +11,73 @@ import { useDispatch } from 'react-redux';
 
 function Filters() {
   const dispatch = useDispatch()
-  
+  const pokeTypes = useSelector(state => state.types)
 
+  useEffect(() => {
+    dispatch(getTypes())
+  },[dispatch])
 
+  const handleFilterTypes = (e) => {
+    if(e.target.value !== "Tipo") {
+      dispatch(filterByType(e.target.value))
+    }
+  }
 
+  const handleFilterOrigin = (e) => {
+    if(e.target.value !== "Origen") {
+      dispatch(filterByOrigin(e.target.value))
+    }
+  }
+
+  const handleOrderAlphabetic = (e) => {
+    if(e.target.value !== "Orden alfabetico") {
+      dispatch(sortByAlphabetic(e.target.value))
+    }
+  }
+
+  const handleOrderByAttack = (e) => {
+    if(e.target.value !== "Orden por ataque") {
+      dispatch(sortByAttack(e.target.value))
+    }
+  }
 
   return (
 
     <>
     <div>
-      <select>
+      <select onChange={(e) => handleFilterTypes(e)}>
         <option>Tipo</option>
         <option value="all">Todos</option>
-        {}
+        {
+          pokeTypes?.map(type => {
+            return(
+              <option
+              key={type.id} 
+              value={type.name} >
+              {type.name}
+              </option>
+            )
+          })
+        }
       </select>
 
-      <select>
-        <option>Origen</option>
+      <select onChange={(e) => handleFilterOrigin(e)}>
+        <option >Origen</option>
         <option value="all">Todos</option>
         <option value="api">API</option>
         <option value="db">DB</option>
       </select>
 
-      <select>
+      <select onChange={(e) => handleOrderByAttack(e)}>
         <option>Orden por ataque</option>
-        <option value="asc">↑ Min - Max</option>
-        <option value="desc">↓ Max - Min</option>
+        <option value="min">↑ Min - Max</option>
+        <option value="max">↓ Max - Min</option>
 
       </select>
     </div>
 
     <div>
-      <select>
+      <select onChange={(e) => handleOrderAlphabetic(e)}>
         <option>Orden alfabetico</option>
         <option value="asc">A - Z</option>
         <option value="desc">Z - A</option>
