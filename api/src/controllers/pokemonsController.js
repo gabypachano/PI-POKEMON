@@ -16,10 +16,11 @@ const getPokemonsApi = async () => {
                 id: info.data.id,
                 name: info.data.name,
                 image: info.data.sprites.front_default,
-                types: info.data.types.map((t) => t.type.name),
+                types: info.data.types.map((t) => t.type.name).join(' '),
                 attack: info.data.stats[1].base_stat
             }
         })
+       
         const getAllPokemons = await Promise.all(promisesPokemon)
         return getAllPokemons
     } catch (error) {

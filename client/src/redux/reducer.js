@@ -38,7 +38,7 @@ const rootReducer = (state = initialState, action) => {
           if(action.payload === "all") {
             pokemonsFilter = state.allPokemons
           } else {
-            pokemonsFilter = state.allPokemons.filter(poke => poke.types.includes(action.payload))
+            pokemonsFilter = state.allPokemons.filter(poke => poke.types === action.payload)
           }
           return {
             ...state,
@@ -108,7 +108,6 @@ const rootReducer = (state = initialState, action) => {
             ...state,
             pokemonsFilter: orderByAttack
           }
-
 
         default: 
           return {...state}

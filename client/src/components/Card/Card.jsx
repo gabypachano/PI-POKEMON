@@ -15,7 +15,7 @@ const Card = ({id, image, name, types, attack}) => {
       <div>
         <p><span>Types: </span></p>
         {
-          <p><span>{types?.map((type) => type)}</span></p>
+          <p><span>{types}</span></p>
         }
 
       </div>
