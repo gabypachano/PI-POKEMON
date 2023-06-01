@@ -6,6 +6,9 @@ import { getPokemonsByName } from '../../redux/actions'
 
 // Del readme: SearchBar: un input de búsqueda para encontrar pokemon por nombre. La búsqueda debe ser exacta, por lo que sólo lo encontrará si se lo busca con su nombre completo.
 
+//! ARREGLAR QUE LA BUSQUEDA SEA EXACTA, Y QUE ARROJE UN ERROR SI EL NOMBRE DEL POKEMON NO COINCIDE
+
+
 const SearchBar =() => {
   const dispatch = useDispatch()
   const [name, setName] = useState("")
