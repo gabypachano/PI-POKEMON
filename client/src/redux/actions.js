@@ -1,5 +1,5 @@
 import axios from "axios"
-import { GET_ALL_POKEMONS, GET_POKEMONS_BY_NAME, GET_ALL_TYPES, FILTER_BY_TYPE, FILTER_BY_ORIGIN, SORT_BY_ALPHABETICAL_ORDER, SORT_BY_ATTACK } from "./types"
+import { GET_ALL_POKEMONS, GET_POKEMONS_BY_NAME, GET_ALL_TYPES, FILTER_BY_TYPE, FILTER_BY_ORIGIN, SORT_BY_ALPHABETICAL_ORDER, SORT_BY_ATTACK, GET_POKEMONS_BY_ID } from "./types"
 
 export const getAllPokemons = () => {
     let endpoint = "http://localhost:3001/pokemons"
@@ -51,6 +51,19 @@ export const createPokemons = (payload) => {
             console.error(error)
         }
     }
+}
+
+export const getPokemonsById = (id) => {
+    let endpoint = `http://localhost:3001/pokemons${id}`
+    return async (dispatch) => {
+        try {
+            const response = await axios.get(endpoint)
+            dispatch({type: GET_POKEMONS_BY_ID, payload: response.data})
+        } catch (error) {
+            console.error(error)
+        }
+    }
+
 }
 
 export const filterByType = (value) => {

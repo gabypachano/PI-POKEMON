@@ -2,7 +2,7 @@ import React from 'react'
 import { useState } from 'react'
 import { useDispatch } from 'react-redux'
 import { getPokemonsByName } from '../../redux/actions'
-
+import styles from './styles.module.css'
 
 // Del readme: SearchBar: un input de búsqueda para encontrar pokemon por nombre. La búsqueda debe ser exacta, por lo que sólo lo encontrará si se lo busca con su nombre completo.
 
@@ -29,9 +29,11 @@ const SearchBar =() => {
   return (
     <>
 
-    <div>
+    <div className={styles.Container}>
       <input type='text' placeholder='Buscar...' name='search' value={name} onChange={(e) => handleInputChange(e)}/>
-      <button type='submit' onClick={(e) => handleSubmit(e)}>Search 🔎</button>
+    </div>
+    <div>
+      <button type='submit' onClick={(e) => handleSubmit(e)}>Buscar 🔎</button>
     </div>
     </>
   )
