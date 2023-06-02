@@ -54,7 +54,7 @@ export const createPokemons = (payload) => {
 }
 
 export const getPokemonsById = (id) => {
-    let endpoint = `http://localhost:3001/pokemons${id}`
+    let endpoint = `http://localhost:3001/pokemons/${id}`
     return async (dispatch) => {
         try {
             const response = await axios.get(endpoint)
