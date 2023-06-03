@@ -78,7 +78,7 @@ const rootReducer = (state = initialState, action) => {
      
 
       case SORT_BY_ALPHABETICAL_ORDER:
-        let orderAlphabetic = [...state.allPokemons]
+        let orderAlphabetic = [...state.pokemonsFilter]
 
         if(action.payload === "asc") {
           orderAlphabetic.sort((a,b) => {
@@ -100,7 +100,7 @@ const rootReducer = (state = initialState, action) => {
         }
 
       case SORT_BY_ATTACK:
-        let orderByAttack = [...state.allPokemons]
+        let orderByAttack = [...state.pokemonsFilter]
 
         if(action.payload === "min") {
           orderByAttack.sort((a, b) => Number(a.attack) - Number(b.attack))
