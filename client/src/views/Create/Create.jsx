@@ -1,6 +1,8 @@
 import { useEffect, useState} from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { createPokemons, getTypes } from '../../redux/actions';
+import ValidationCreate from './ValidationCreate';
+
 
 // Este formulario debe ser controlado completamente con JavaScritp. No se pueden utilizar validaciones HTML, ni utilizar librerías especiales para esto. Debe contar con los siguientes campos:
 
@@ -45,18 +47,36 @@ const Create = () => {
     types: []
   }
 
+  const [errors, setErrors] = useState({
+    name: "",
+    image: "",
+    hp: "",
+    attack: "",
+    defense: "",
+    types: ""
+  })
+
   const [selectedTypes, setSelectedTypes] = useState([])
 
   const handleInputChange = (e) => {
     setInput({
       ...input, [e.target.name]: e.target.value
     })
+    setErrors(ValidationCreate({
+      ...input, [e.target.name]: e.target.value
+    }))
   }
 
   const handleTypesChange = (e) => {
-    if(![...selectedTypes].includes(e.target.value)) {
-      setSelectedTypes(current => [...current, e.target.value])
+    if([...selectedTypes].length > 2) {
+      return setErrors({...errors, types: "Se pueden seleccionar 2 tipos como maximo"})
     }
+    setErrors({...errors, types: ""})
+    setSelectedTypes([...selectedTypes, e.target.value])
+    
+    // if(![...selectedTypes].includes(e.target.value)) {
+    //   setSelectedTypes(current => [...current, e.target.value])
+    // }
   }
 
   const removeTypes = (types) => {
@@ -72,7 +92,7 @@ const Create = () => {
     dispatch(createPokemons(input))
     setInput(initialState)
     setSelectedTypes([])
-    alert('Formulario enviado con exito!')
+    alert('Nuevo pokemon creado')
   }
 
 // Cada vez que se monte el componente vamos a hacer un useEffect para que se traiga los tipos de pokemons
@@ -92,7 +112,9 @@ useEffect(() => {
           required
           value={input.name}
           placeholder='Escribe un nombre...'
-          onChange={handleInputChange} />
+          onChange={handleInputChange} 
+          />
+          {errors.name && <p>{errors.name}</p>}
         </div>
 
         <div>
@@ -102,8 +124,10 @@ useEffect(() => {
           name="image"
           required
           value={input.image}
-          placeholder='La URL debe ser http, https'
-          onChange={(e) => handleInputChange(e)} />
+          placeholder='La URL debe ser ftp, http, https'
+          onChange={(e) => handleInputChange(e)}
+          />
+          {errors.image && <p>{errors.image}</p>}
         </div>
 
         <div>
@@ -114,7 +138,9 @@ useEffect(() => {
           required
           value={input.hp}
           placeholder='Escribe un valor'
-          onChange={(e) => handleInputChange(e)} />
+          onChange={(e) => handleInputChange(e)}
+          />
+          {errors.hp && <p>{errors.hp}</p>}
         </div>
 
         <div>
@@ -125,7 +151,9 @@ useEffect(() => {
           required
           value={input.attack}
           placeholder='Escribe un valor'
-          onChange={(e) => handleInputChange(e)} />
+          onChange={(e) => handleInputChange(e)}
+          />
+          {errors.attack && <p>{errors.attack}</p>}
         </div>
 
         <div>
@@ -183,7 +211,10 @@ useEffect(() => {
         </div>
 
         <div>
-          <select name="types" onChange={handleTypesChange}>
+          <select
+          name="types" 
+          onChange={handleTypesChange}
+          >
             <option>Types</option>
             {
               types?.map(type => {
@@ -197,8 +228,14 @@ useEffect(() => {
 
           </select>
         </div>
-
-        <button type="submit">ENVIAR</button>
+        {
+          input.name !== "" && input.image !== "" && input.hp !== "" && input.attack !== "" && input.defense !== "" &&  selectedTypes.length > 0 ? 
+            <button 
+            type="submit"
+            onClick={(e) => handleSubmit(e)}
+            >ENVIAR</button> :
+            <button disabled>ENVIAR</button>
+        }
       </form>
     </div>
   )
