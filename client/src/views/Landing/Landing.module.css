@@ -1,0 +1,36 @@
+.container {
+  background-image: url("https://turkau.com/en/wp-content/uploads/2022/07/Pokemon-Wallpaper.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.tittle {
+  font-family: "Comic Sans MS", cursive;
+  font-size: 30px;
+  align-self: center;
+  text-align: center;
+  color: white;
+  background-color: rgba(33, 150, 243, 0.5);
+}
+
+.button {
+  font-family: "Comic Sans MS", cursive;
+  font-size: 20px;
+  margin: 0 auto;
+  padding: 10px 20px;
+  background-color: #2196F3;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.button:hover {
+  background-color: #64B5F6;;
+}
