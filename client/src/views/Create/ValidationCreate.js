@@ -10,18 +10,23 @@ const ValidationCreate = (input) => {
   if (!input.image) errors.image = "La imagen no puede estar vacia";
 
   // Validacion para Hp **
-  if (!input.hp) errors.hp = "Ingresa un valor de vida";
+  if (!input.hp) errors.hp = "El valor de Hp no puede estar vacio";
+  if (input.hp < 0) errors.hp = "El valor tiene que ser mayor que cero";
 
   // Validacion para Attack **
-  if (!input.attack) errors.attack = "Ingresa un valor de fuerza";
+  if (!input.attack) errors.attack = "El valor de ataque no puede estar vacio";
+  if (input.attack < 0) errors.attack = "El valor tiene que ser mayor que cero";
 
   // Validacion para Defense **
   if (!input.defense)
     errors.defense = "El valor de defensa no puede estar vacio";
+  if (input.defense < 0)
+    errors.defense = "El valor tiene que ser mayor que cero";
 
   // Validacion para Types **
   if (!input.types) errors.types = "Debes elegir al menos un tipo";
-  if (input.types.length > 2) errors.types = "No puede elegir mas de dos tipos";
+  if (input.types.length === 2)
+    errors.types = "No puede elegir mas de dos tipos";
   return errors;
 };
 

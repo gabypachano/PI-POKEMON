@@ -114,8 +114,8 @@ useEffect(() => {
           placeholder='Escribe un nombre...'
           onChange={handleInputChange} 
           />
-          {errors.name && <p>{errors.name}</p>}
         </div>
+          {errors.name && <p>{errors.name}</p>}
 
         <div>
           <label>Imagen: </label>
@@ -165,6 +165,7 @@ useEffect(() => {
           value={input.defense}
           placeholder='Escribe un valor'
           onChange={(e) => handleInputChange(e)} />
+          {errors.defense && <p>{errors.defense}</p>}
         </div>
 
         <div>
@@ -225,9 +226,9 @@ useEffect(() => {
                 )
               })
             }
-
           </select>
         </div>
+        {errors.types && <p>{errors.types}</p>}
         {
           input.name !== "" && input.image !== "" && input.hp !== "" && input.attack !== "" && input.defense !== "" &&  selectedTypes.length > 0 ? 
             <button 
