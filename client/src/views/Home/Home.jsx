@@ -2,7 +2,7 @@ import React, { useEffect } from 'react'
 import Cards from '../../components/Cards/Cards'
 import { useDispatch } from 'react-redux'
 import { getAllPokemons } from '../../redux/actions'
-
+import style from './Home.module.css'
 
 
 const Home = () => {
@@ -19,8 +19,7 @@ useEffect(() => {
 
 
   return (
-    <div>
-      <h1>ESTAMOS EN EL COMPONENTE HOME</h1>
+    <div className={style.container}>
       <Cards />
     </div>
   )
