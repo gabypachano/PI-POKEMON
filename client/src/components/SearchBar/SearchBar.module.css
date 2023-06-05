@@ -1,0 +1,18 @@
+.container {
+    display: flex;
+    align-items: center;
+}
+
+.container input {
+    font-family: "Comic Sans MS", cursive;
+    font-size: 15px;
+    max-width: 190px;
+    outline: none;
+    border: 1px solid #dadada;
+    padding: 10px;
+    border-radius: 5px;
+    background-color: #f3f7fe;
+    transition: .3s;
+    color: #383a3c;
+    margin: 10px;
+  }

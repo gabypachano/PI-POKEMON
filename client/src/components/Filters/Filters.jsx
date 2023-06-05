@@ -2,8 +2,7 @@ import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { filterByOrigin, filterByType, getTypes, sortByAlphabetic, sortByAttack } from '../../redux/actions';
 import { useEffect } from 'react';
-
-
+import style from './Filters.module.css'
 
 // Botones/Opciones para filtrar por tipo, y por si su origen es de la API o de la base de datos (creados por nosotros desde el formulario).
 // Botones/Opciones para ordenar tanto ascendentemente como descendentemente los pokemones por orden alfabético y por ataque.
@@ -44,7 +43,7 @@ function Filters() {
   return (
 
     <>
-    <div>
+    <div className={style.container}>
       <select onChange={(e) => handleFilterTypes(e)}>
         <option>Tipo</option>
         <option value="all">Todos</option>
@@ -74,15 +73,14 @@ function Filters() {
         <option value="max">↓ Max - Min</option>
 
       </select>
-    </div>
+    
 
-    <div>
+    
       <select onChange={(e) => handleOrderAlphabetic(e)}>
         <option>Orden alfabetico</option>
         <option value="asc">A - Z</option>
         <option value="desc">Z - A</option>
       </select>
-
     </div>
     </>
   )
