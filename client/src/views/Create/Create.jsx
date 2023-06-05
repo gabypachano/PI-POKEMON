@@ -2,8 +2,8 @@ import { useEffect, useState} from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { createPokemons, getTypes } from '../../redux/actions';
 import ValidationCreate from './ValidationCreate';
-import style from './Create.module.css'
-
+import { Link } from 'react-router-dom';
+import style from './Create.module.css';
 
 // Este formulario debe ser controlado completamente con JavaScritp. No se pueden utilizar validaciones HTML, ni utilizar librerías especiales para esto. Debe contar con los siguientes campos:
 
@@ -100,8 +100,14 @@ useEffect(() => {
 }, [dispatch])
 
   return (
-    <div>
-      <form onSubmit={handleSubmit}>
+    <div className={style.container}>
+    
+      <Link to="/home">
+        <button className={style.button}>Home</button>
+      </Link>
+    
+
+      <form onSubmit={handleSubmit} className={style.form}>
         <div>
           <label>Nombre: </label>
           <input
@@ -229,11 +235,11 @@ useEffect(() => {
         {errors.types && <p>{errors.types}</p>}
         {
           input.name !== "" && input.image !== "" && input.hp !== "" && input.attack !== "" && input.defense !== "" &&  selectedTypes.length > 0 ? 
-            <button 
+            <button className={style.button}
             type="submit"
             onClick={(e) => handleSubmit(e)}
             >ENVIAR</button> :
-            <button disabled>ENVIAR</button>
+            <button disabled className={style.button}>Enviar!</button>
         }
       </form>
     </div>

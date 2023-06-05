@@ -1,0 +1,88 @@
+.container{
+    display: flex;
+    flex-direction: row; 
+    justify-content: space-evenly; 
+    align-items: center;
+    min-height: 100vh;
+  }
+
+.form {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    padding: 10px;
+    border: 1.5px solid black;
+    border-radius: 10px;
+    background-color: #2196F3;
+}
+
+.form input {
+    font-family: "Comic Sans MS", cursive;
+    font-size: 12px;
+    outline: none;
+    padding: 10px;
+    border: 1px solid black;
+    border-radius: 10px;
+    text-align: center;
+    
+    margin: 3px;
+    width: 200px;
+    height: 15px;
+}
+
+.form label{
+    text-align: left; 
+    font-family: "Comic Sans MS", cursive;
+    font-weight: bold; font-size: 15px; 
+    color: white; 
+    -webkit-background-clip: text; 
+    -moz-background-clip: text; 
+    background-clip: text; 
+}
+
+/* .container input {
+    font-family: "Comic Sans MS", cursive;
+    font-size: 15px;
+    max-width: 190px;
+    outline: none;
+    border: 1px solid #dadada;
+    padding: 10px;
+    border-radius: 5px;
+    background-color: #f3f7fe;
+    transition: .3s;
+    color: #383a3c;
+    margin: 10px;
+  } */
+
+.container select {
+    font-family: "Comic Sans MS", cursive;
+    font-size: 15px;
+    background-color: #2196F3;
+    color: white;
+    padding: 5px 10px;
+    font-size: 15px;
+    border: 1px solid black;
+    border-radius: 10px;
+    cursor: pointer;
+
+}
+
+.button {
+    font-family: "Comic Sans MS", cursive;
+    font-size: 20px;
+    padding: 10px 20px;
+    background-color: #2196F3;
+    color: white;
+    border: 1px solid black;
+    border-radius: 10px;
+    cursor: pointer;
+  }
+
+  .button:disabled {
+    opacity: 0.5; /* Establece la opacidad del botón desactivado */
+    cursor: not-allowed;
+  }
+
+  .button:hover {
+    background-color: #64B5F6;
+  }
