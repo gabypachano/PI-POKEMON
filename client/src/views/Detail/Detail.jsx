@@ -24,11 +24,13 @@ const Detail = () => {
         <div className={style.card}>
         <h2>{myPokemon[0]?.name.toUpperCase()}</h2>
         {myPokemon.length > 0 && (
-         
-        <img src={myPokemon[0]?.image} alt={myPokemon[0]?.name} />
-     
-        )}
-      
+          
+          <img src={myPokemon[0]?.image} alt={myPokemon[0]?.name} />
+          
+          )}
+          <p>
+          <span>ID: </span>
+          {myPokemon[0]?.id}</p>
           <p>
             <span>Tipos: </span>
             {myPokemon[0]?.types}

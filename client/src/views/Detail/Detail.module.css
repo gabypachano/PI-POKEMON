@@ -14,12 +14,11 @@
     margin: 20px;
     display: inline-block;
     width: 400px;
-    height: 570px;
+    height: 630px;
     transition: all .4s linear;
-
     font-family: "Comic Sans MS", cursive;
     font-size: 14px;    
-    background-color: #bce2f5;
+    background-color: rgb(226, 226, 225);
   }
   
   .card-link {
@@ -49,10 +48,6 @@
   .card span {
     font-weight: bold;
     display: block;
-  }
-   
-  .card:hover {
-    background-color: rgb(226, 226, 225);
   }
   
   .button {
