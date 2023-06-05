@@ -1,7 +1,10 @@
 .App {
   text-align: center;
-}
+  background-image: url('https://mir-s3-cdn-cf.behance.net/project_modules/max_1200/8f528695349461.5e959abf956b9.png'); 
+  background-size: cover;
 
+}
+/* 
 .App-logo {
   height: 40vmin;
   pointer-events: none;
@@ -35,4 +38,4 @@
   to {
     transform: rotate(360deg);
   }
-}
+} */

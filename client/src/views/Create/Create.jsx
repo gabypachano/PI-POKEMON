@@ -2,6 +2,7 @@ import { useEffect, useState} from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { createPokemons, getTypes } from '../../redux/actions';
 import ValidationCreate from './ValidationCreate';
+import style from './Create.module.css'
 
 
 // Este formulario debe ser controlado completamente con JavaScritp. No se pueden utilizar validaciones HTML, ni utilizar librerías especiales para esto. Debe contar con los siguientes campos:
@@ -68,15 +69,12 @@ const Create = () => {
   }
 
   const handleTypesChange = (e) => {
-    if([...selectedTypes].length > 2) {
+    if([...selectedTypes].length === 2) {
       return setErrors({...errors, types: "Se pueden seleccionar 2 tipos como maximo"})
     }
     setErrors({...errors, types: ""})
     setSelectedTypes([...selectedTypes, e.target.value])
-    
-    // if(![...selectedTypes].includes(e.target.value)) {
-    //   setSelectedTypes(current => [...current, e.target.value])
-    // }
+
   }
 
   const removeTypes = (types) => {
@@ -114,8 +112,8 @@ useEffect(() => {
           placeholder='Escribe un nombre...'
           onChange={handleInputChange} 
           />
-        </div>
           {errors.name && <p>{errors.name}</p>}
+        </div>
 
         <div>
           <label>Imagen: </label>

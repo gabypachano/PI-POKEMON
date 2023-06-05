@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react'
-import { Link, useParams } from 'react-router-dom'
+import { useParams } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
 import { getPokemonsById } from '../../redux/actions'
 
@@ -33,7 +33,6 @@ const Detail = () => {
         <h1>Tipo: {myPokemon[0]?.types} </h1>
 
       </div> : null
-
     }
   </div>
   </>

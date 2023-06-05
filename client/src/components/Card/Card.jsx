@@ -13,12 +13,9 @@ const Card = ({ id, image, name, types, attack }) => {
       </Link>
       <div>
         <p>
-          <span>Types: </span>
+          <span>Tipo: </span>
           {types}
         </p>
-      </div>
-      <div>
-        <h3> {attack} </h3>
       </div>
     </div>
   );
