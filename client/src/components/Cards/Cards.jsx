@@ -1,8 +1,8 @@
 import React from 'react'
-import './Cards.css'
 import { useState } from 'react'
 import { useSelector } from 'react-redux'
 import Card from '../Card/Card'
+import style from './Cards.module.css'
 
 const Cards = () => {
 
@@ -28,8 +28,8 @@ const Cards = () => {
 
   return (
     <>
-    <div className='divContainer'>
-      <div className='divCards'>
+    <div className={style.container}>
+      <div className={style.cards}>
         {
           currentPokemons?.map((pokemon, index) => (
             <Card 
@@ -38,17 +38,16 @@ const Cards = () => {
             name={pokemon.name}
             image={pokemon.image}
             types={pokemon.types}
-            attack={pokemon.attack}
             />
           ))
         }
       </div>
       
-      <div>
+      <div >
         {
           pageNumber?.map((number, index) => {
             return(
-              <button key={index} onClick={() => paginado(number)}>{number}</button>
+              <button key={index} onClick={() => paginado(number)} className={style.button}  >{number}</button>
             )
           })
         }

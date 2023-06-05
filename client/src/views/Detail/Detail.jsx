@@ -1,54 +1,66 @@
-import React, { useEffect } from 'react'
-import { useParams } from 'react-router-dom'
-import { useDispatch, useSelector } from 'react-redux'
-import { getPokemonsById } from '../../redux/actions'
-
+import React, { useEffect } from 'react';
+import { Link, useParams } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
+import { getPokemonsById } from '../../redux/actions';
+import style from './Detail.module.css';
 
 const Detail = () => {
-  let {id} = useParams()
-  const dispatch = useDispatch()
-  const myPokemon = useSelector((state) => state.pokemonDetail)
+  let { id } = useParams();
+  const dispatch = useDispatch();
+  const myPokemon = useSelector((state) => state.pokemonDetail);
 
   useEffect(() => {
-    dispatch(getPokemonsById(id))
-  }, [dispatch, id])
+    dispatch(getPokemonsById(id));
+  }, [dispatch, id]);
 
-  console.log(myPokemon)
+  console.log(myPokemon);
 
-  return(
-  <>
-  <div>
-    {
-      myPokemon.length>0 ?
-      <div>
-        <h1>Nombre: {myPokemon[0]?.name.toUpperCase()} </h1>
-        <h1>ID: {myPokemon[0]?.id} </h1>
-        <h1><img src={myPokemon[0]?.image} alt={myPokemon[0].image} /></h1>
-        <h1>Vida: {myPokemon[0].hp} </h1>
-        <h1>Ataque: {myPokemon[0]?.attack}</h1>
-        <h1>Defensa: {myPokemon[0]?.defense}</h1>
-        <h1>Velocidad: {myPokemon[0]?.speed} </h1>
-        <h1>Altura: {myPokemon[0]?.height} </h1>
-        <h1>Peso: {myPokemon[0]?.weight} </h1>
-        <h1>Tipo: {myPokemon[0]?.types} </h1>
+  return (
+    <>
+    <div className={style.container}>
+      <Link to="/home">
+          <button className={style.button}>Home</button>
+      </Link>
+        <div className={style.card}>
+        <h2>{myPokemon[0]?.name.toUpperCase()}</h2>
+        {myPokemon.length > 0 && (
+         
+        <img src={myPokemon[0]?.image} alt={myPokemon[0]?.name} />
+     
+        )}
+      
+          <p>
+            <span>Tipos: </span>
+            {myPokemon[0]?.types}
+          </p>
+          <p>
+            <span>Vida: </span>
+            {myPokemon[0]?.hp}
+          </p>
+          <p>
+            <span>Ataque: </span>
+            {myPokemon[0]?.attack}
+          </p>
+          <p>
+            <span>Defensa: </span>
+            {myPokemon[0]?.defense}
+          </p>
+          <p>
+            <span>Velocidad: </span>
+            {myPokemon[0]?.speed}
+          </p>
+          <p>
+            <span>Altura: </span>
+            {myPokemon[0]?.height}
+          </p>
+          <p>
+            <span>Peso: </span>
+            {myPokemon[0]?.weight}
+          </p>
+        </div>
+      </div>
+    </>
+  );
+};
 
-      </div> : null
-    }
-  </div>
-  </>
-    )
-  }
-
-//que se debe renderizar en Detail?
-//ID.
-// Nombre.
-// Imagen.
-// Vida.
-// Ataque.
-// Defensa.
-// Velocidad (si tiene).
-// Altura (si tiene).
-// Peso (si tiene).
-// Tipo.
-
-export default Detail
+export default Detail;

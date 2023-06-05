@@ -1,6 +1,7 @@
 .card {
     border: 1.5px solid black;
-    border-radius: 0.8em;
+    border-radius: 20px;
+    background-color: #f1f1f1;
     cursor: pointer;
     padding: 30px;
     margin: 20px;
@@ -8,6 +9,8 @@
     width: 300px;
     height: 450px;
     transition: all .4s linear;
+    font-family: "Comic Sans MS", cursive;
+    
   }
   
   .card-link {
@@ -17,14 +20,14 @@
   }
   
   .card img {
-    width: 100%;
-    height: 250px;
+    width: 80%;
+    height: 200px;
     object-fit: cover;
     margin-bottom: 10px;
     border-radius: 5px;
     margin: 20px 0;
     background: #2196F3;
-    font-family: inherit;
+    font-family: "Comic Sans MS", cursive;
     font-weight: 900;
     font-size: 18px;
     border: 1px solid black;
@@ -34,7 +37,7 @@
   .card h2 {
     font-size: 1.5rem;
     margin-bottom: 5px;
-    font-style: italic;
+    font-style: "Comic Sans MS", cursive;
     color: #121111;
   }
   
