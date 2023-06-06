@@ -33,7 +33,7 @@ const Detail = () => {
           {myPokemon[0]?.id}</p>
           <p>
             <span>Tipos: </span>
-            {myPokemon[0]?.types}
+            {myPokemon[0]?.types.join(' ')}
           </p>
           <p>
             <span>Vida: </span>

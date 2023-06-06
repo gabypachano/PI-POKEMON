@@ -15,7 +15,7 @@ const Cards = () => {
   const [pokemonsPerPage, /* setPokemonsPerPage */] = useState(12) // Mi paginado es de 12 pokemons por pagina
   const indexOfLastPokemon = currentPage * pokemonsPerPage // 1 * 12 = 12
   const indexOfFirstPokemon = indexOfLastPokemon - pokemonsPerPage // 12 - 12 = 0
-  const currentPokemons = pokemons.slice(indexOfFirstPokemon, indexOfLastPokemon) // Me traigo mi estado global, este estado va a tener todos los perritos 
+  const currentPokemons = pokemons.slice(indexOfFirstPokemon, indexOfLastPokemon) // Me traigo mi estado global, este estado va a tener todos los pokemons 
   
   const pageNumber = [];
   for(let i=1; i <= Math.ceil(pokemons.length/pokemonsPerPage); i++) {
@@ -52,7 +52,6 @@ const Cards = () => {
           })
         }
       </div>
-
     </div>
     </>
   )
