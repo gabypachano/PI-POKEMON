@@ -1,14 +1,10 @@
 import React from 'react'
 import { useState } from 'react'
-import { useSelector } from 'react-redux'
+
 import Card from '../Card/Card'
 import style from './Cards.module.css'
 
-const Cards = () => {
-
-  //Acá voy a crear mi Estado Global, se guarda todo lo que está en el estado allPokemons
-  const pokemons = useSelector(state => state.pokemonsFilter)
-
+const Cards = ({pokemons}) => {
 
 // Acá haré mi paginado
   const [currentPage, setCurrentPage] = useState(1)
