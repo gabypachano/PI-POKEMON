@@ -18,8 +18,6 @@ import style from './Create.module.css';
 // Posibilidad de seleccionar/agregar varios tipos en simultáneo.
 // Botón para crear el nuevo pokemon.
 
-
-
 const Create = () => {
   const dispatch = useDispatch()
   const types = useSelector((state) => state.types)
@@ -83,14 +81,17 @@ const Create = () => {
   }
 
   const handleSubmit = (e) => {
-    e.preventDefault()
+    try {
+      e.preventDefault()
     setInput({
       ...input, types: input.types.push(...selectedTypes)
     })
     dispatch(createPokemons(input))
     setInput(initialState)
     setSelectedTypes([])
-    alert('Nuevo pokemon creado')
+    } catch (error) {
+      alert(error.message)
+    }
   }
 
 // Cada vez que se monte el componente vamos a hacer un useEffect para que se traiga los tipos de pokemons

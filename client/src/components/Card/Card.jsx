@@ -14,7 +14,7 @@ const Card = ({ id, image, name, types }) => {
       <div>
         <p>
           <span>TIPOS: </span>
-          {types}
+          {types.join(' ')}
         </p>
       </div>
     </div>

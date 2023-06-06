@@ -13,13 +13,12 @@ const getPokemonsApi = async () => {
 
     const promisesPokemon = results.map(async (pokemon) => {
       const info = await axios.get(pokemon.url);
-      const pokeTypes = info.data.types.map((data) => data.type.name).join(" ");
-      console.log(pokeTypes);
+
       return {
         id: info.data.id,
         name: info.data.name,
         image: info.data.sprites.front_default,
-        types: pokeTypes,
+        types: info.data.types.map((data) => data.type.name),
         attack: info.data.stats[1].base_stat,
         hp: info.data.stats[0].base_stat,
         defense: info.data.stats[2].base_stat,
