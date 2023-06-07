@@ -5,19 +5,6 @@ import ValidationCreate from "./ValidationCreate";
 import { Link } from "react-router-dom";
 import style from "./Create.module.css";
 
-// Este formulario debe ser controlado completamente con JavaScritp. No se pueden utilizar validaciones HTML, ni utilizar librerías especiales para esto. Debe contar con los siguientes campos:
-
-// Nombre.
-// Imagen.
-// Vida.
-// Ataque.
-// Defensa.
-// Velocidad (si tiene).
-// Altura (si tiene).
-// Peso (si tiene).
-// Posibilidad de seleccionar/agregar varios tipos en simultáneo.
-// Botón para crear el nuevo pokemon.
-
 const Create = () => {
   const dispatch = useDispatch();
   const types = useSelector((state) => state.types);
@@ -100,8 +87,6 @@ const Create = () => {
       alert(error.message);
     }
   };
-
-  // Cada vez que se monte el componente vamos a hacer un useEffect para que se traiga los tipos de pokemons
 
   useEffect(() => {
     dispatch(getTypes());
