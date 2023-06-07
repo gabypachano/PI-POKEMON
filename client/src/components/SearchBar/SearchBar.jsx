@@ -4,10 +4,8 @@ import { useDispatch, useSelector } from "react-redux";
 import { getPokemonsByName } from "../../redux/actions";
 import style from "./SearchBar.module.css";
 
-// Del readme: SearchBar: un input de búsqueda para encontrar pokemon por nombre. La búsqueda debe ser exacta, por lo que sólo lo encontrará si se lo busca con su nombre completo.
-
 const SearchBar = () => {
-  const pokeName = useSelector((state) => state.allPokemons);
+  const pokeName = useSelector((state) => state.pokemonsFilter);
   const dispatch = useDispatch();
   const [name, setName] = useState("");
 
