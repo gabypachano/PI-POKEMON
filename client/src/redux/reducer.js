@@ -49,17 +49,17 @@ const rootReducer = (state = initialState, action) => {
       };
 
     case FILTER_BY_TYPE:
-      let pokemonsFilter;
+      let pokemonsTypeFiltered;
       if (action.payload === "all") {
-        pokemonsFilter = state.allPokemons;
+        pokemonsTypeFiltered = state.allPokemons;
       } else {
-        pokemonsFilter = state.allPokemons.filter((poke) =>
+        pokemonsTypeFiltered = state.allPokemons.filter((poke) =>
           poke.types.includes(action.payload)
         );
       }
       return {
         ...state,
-        pokemonsFilter: pokemonsFilter,
+        pokemonsFilter: pokemonsTypeFiltered,
       };
 
     case FILTER_BY_ORIGIN:

@@ -19,7 +19,7 @@ const SearchBar = () => {
     if (searchName.includes(name.toLowerCase())) {
       dispatch(getPokemonsByName(name));
     } else {
-      alert("El nombre del pokemon no coincide");
+      alert("No se encontró ningún pokemon con ese nombre");
     }
     setName("");
   };
