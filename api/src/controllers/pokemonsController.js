@@ -1,9 +1,7 @@
 const axios = require("axios");
 const { Pokemon, Type } = require("../db");
 
-// README: Obtiene un arreglo de objetos, donde cada objeto es un pokemon con su información.
 // Funcion para traerme los datos de la API, me traigo 50 pokemones
-
 const getPokemonsApi = async () => {
   try {
     const peticionApi = await axios.get(
@@ -34,15 +32,6 @@ const getPokemonsApi = async () => {
     throw new Error(error.message);
   }
 };
-
-// Nombre. **
-// Imagen. **
-// Vida.   **
-// Ataque. **
-// Defensa.**
-// Velocidad (si tiene).
-// Altura (si tiene).
-// Peso (si tiene).
 
 // Función para obtener la info de la DB
 const getPokemonsDb = async () => {
@@ -95,13 +84,7 @@ const getPokemonById = async (id) => {
 };
 
 // Función para crear un nuevo Pokemon y guardarlo en la base de datos
-// Paso a paso:
-// (La función recibe por parámetro) todos los valores que voy a recibir por formulario
-// 1. Voy a crear el pokemon con el metodo create or findorcreate
-// 2. Voy a buscar los tipos en la base de datos porque desde alli es que el cliente los va a obtener
-// 3. Voy a hacer la relacion de lo que recibo por body y los tipos que va a buscar en la DB
-// 4. Probar con un JSON si se crea el pokemon y como se crea
-// 5. Muy probablemente debo hacer una funcion para mapear la forma en que me devuelve los tipos de los pokemones)
+
 const createPokemonDb = async (
   name,
   image,

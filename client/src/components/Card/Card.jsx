@@ -1,20 +1,18 @@
-import React from 'react';
-import './Card.css';
-import { Link } from 'react-router-dom';
+import React from "react";
+import style from "./Card.module.css";
+import { Link } from "react-router-dom";
 
 const Card = ({ id, image, name, types }) => {
   return (
-    <div className="card">
+    <div className={style.card}>
       <h2>{name.toUpperCase()}</h2>
       <Link to={`/detail/${id}`}>
-        <div className="card-image">
-          <img src={image} alt={name} />
-        </div>
+        <img src={image} alt={name} />
       </Link>
       <div>
         <p>
-          <span>TIPOS: </span>
-          {types.join(' ')}
+          <span>TIPOS:</span>
+          {types.join(" ")}
         </p>
       </div>
     </div>

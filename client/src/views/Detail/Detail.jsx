@@ -1,8 +1,8 @@
-import React, { useEffect } from 'react';
-import { Link, useParams } from 'react-router-dom';
-import { useDispatch, useSelector } from 'react-redux';
-import { getPokemonsById } from '../../redux/actions';
-import style from './Detail.module.css';
+import React, { useEffect } from "react";
+import { Link, useParams } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { getPokemonsById } from "../../redux/actions";
+import style from "./Detail.module.css";
 
 const Detail = () => {
   let { id } = useParams();
@@ -13,27 +13,24 @@ const Detail = () => {
     dispatch(getPokemonsById(id));
   }, [dispatch, id]);
 
-  console.log(myPokemon);
-
   return (
     <>
-    <div className={style.container}>
-      <Link to="/home">
+      <div className={style.container}>
+        <Link to="/home">
           <button className={style.button}>Home</button>
-      </Link>
+        </Link>
         <div className={style.card}>
-        <h2>{myPokemon[0]?.name.toUpperCase()}</h2>
-        {myPokemon.length > 0 && (
-          
-          <img src={myPokemon[0]?.image} alt={myPokemon[0]?.name} />
-          
+          <h2>{myPokemon[0]?.name.toUpperCase()}</h2>
+          {myPokemon.length > 0 && (
+            <img src={myPokemon[0]?.image} alt={myPokemon[0]?.name} />
           )}
           <p>
-          <span>ID: </span>
-          {myPokemon[0]?.id}</p>
+            <span>ID: </span>
+            {myPokemon[0]?.id}
+          </p>
           <p>
             <span>Tipos: </span>
-            {myPokemon[0]?.types.join(' ')}
+            {myPokemon[0]?.types.join(" ")}
           </p>
           <p>
             <span>Vida: </span>
