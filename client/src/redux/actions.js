@@ -52,7 +52,7 @@ export const createPokemons = (payload) => {
     try {
       const response = await axios.post(endpoint, payload);
       console.log(response);
-      alert("Nuevo pokemon creado");
+      alert(response.data.message);
       return response;
     } catch (error) {
       alert("Este pokemon ya existe");
